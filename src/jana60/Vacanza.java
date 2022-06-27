@@ -1,6 +1,8 @@
 package jana60;
 
 import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 
 public class Vacanza {
 
@@ -65,6 +67,32 @@ public class Vacanza {
 		if (dataInizio.isBefore(dataInizio)) {
 			throw new Exception("La data di fine non può essere precedente a quella di inizio!");
 		}
+	}
+
+	// Formattatore data
+	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+	// Metodi
+
+	public String calcolaVacanza() {
+		Period etaPeriod = Period.between(dataInizio, dataFine);
+
+		return formatter.format(etaPeriod);
+
+	}
+
+	// Getter
+	public String getDataInizioFormat() {
+		return formatter.format(dataInizio);
+	}
+
+	public String getDataFineFormat() {
+		return formatter.format(dataFine);
+	}
+
+	@Override
+	public String toString() {
+		return "La vacanza selezionata durerà: " + calcolaVacanza() + " giorni, Buona vacanza!";
 	}
 
 }
