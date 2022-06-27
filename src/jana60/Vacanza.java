@@ -27,13 +27,13 @@ public class Vacanza {
 		this.validAnno();
 	}
 
-	LocalDate dataInizio = LocalDate.of(annoInizio, meseInizio, giornoInizio);
-	LocalDate dataFine = LocalDate.of(annoFine, meseFine, giornoFine);
+	private LocalDate dataInizio = LocalDate.of(annoInizio, meseInizio, giornoInizio);
+	private LocalDate dataFine = LocalDate.of(annoFine, meseFine, giornoFine);
 
 	// Attributi di Validazione
 
 	public void validDestinazione() throws Exception {
-		if (destinazione.equals(null)) {
+		if (destinazione.equals(null) || destinazione.equals("")) {
 			throw new Exception("Devi scrivere qualcosa nel campo destinazione!");
 		}
 	}
@@ -74,10 +74,10 @@ public class Vacanza {
 
 	// Metodi
 
-	public String calcolaVacanza() {
+	public Period calcolaVacanza() {
 		Period etaPeriod = Period.between(dataInizio, dataFine);
 
-		return formatter.format(etaPeriod);
+		return etaPeriod;
 
 	}
 
@@ -92,7 +92,8 @@ public class Vacanza {
 
 	@Override
 	public String toString() {
-		return "La vacanza selezionata durerà: " + calcolaVacanza() + " giorni, Buona vacanza!";
+		return "Hai appena prenotato per andare a : " + destinazione + ". La vacanza selezionata durerà: "
+				+ calcolaVacanza() + " giorni, Buona vacanza!";
 	}
 
 }
