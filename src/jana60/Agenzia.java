@@ -31,6 +31,28 @@ public class Agenzia {
 				System.out.println("Hai selezionato come data di inizio: " + vacanza.getDataInizioFormat());
 				System.out.println("Hai selezionato come data di inizio: " + vacanza.getDataFineFormat());
 				System.out.println(vacanza.toString());
+				String key;
+				boolean flag2 = true;
+				do {
+					System.out.println("Vuoi acquistare un altro viaggio? Scrivi solo Si o No");
+					key = scan.nextLine();
+					if (key.equalsIgnoreCase("Si") || key.equalsIgnoreCase("No")) {
+						flag2 = false;
+					} else {
+						System.out.println("Hai inserito un carattere errato, Riprova!");
+
+					}
+				} while (flag2);
+				switch (key) {
+				case "Si":
+
+					break;
+
+				default:
+					System.out.println("Grazie per averci scelto! Alla prossima.");
+					flag = false;
+					break;
+				}
 			} catch (NumberFormatException nfe) {
 				System.out.println(
 						"Hai inserito un carattere non valido Inserisci solo numeri tranne che per la Destinazione!");

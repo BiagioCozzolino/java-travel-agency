@@ -9,10 +9,11 @@ public class Vacanza {
 	// Attributi
 	private String destinazione;
 	private int giornoInizio, meseInizio, annoInizio, giornoFine, meseFine, annoFine;
+	LocalDate dataInizio;
+	LocalDate dataFine;
 
 	public Vacanza(String destinazione, int giornoInizio, int meseInizio, int annoInizio, int giornoFine, int meseFine,
 			int annoFine) throws Exception {
-		super();
 		this.destinazione = destinazione;
 		this.giornoInizio = giornoInizio;
 		this.meseInizio = meseInizio;
@@ -21,14 +22,16 @@ public class Vacanza {
 		this.meseFine = meseFine;
 		this.annoFine = annoFine;
 
+		dataInizio = LocalDate.of(annoInizio, meseInizio, giornoInizio);
+		dataFine = LocalDate.of(annoFine, meseFine, giornoFine);
+
 		this.validDestinazione();
 		this.validGiorno();
 		this.validMese();
 		this.validAnno();
+		this.validDataInizio();
+		this.validDataFine();
 	}
-
-	private LocalDate dataInizio = LocalDate.of(annoInizio, meseInizio, giornoInizio);
-	private LocalDate dataFine = LocalDate.of(annoFine, meseFine, giornoFine);
 
 	// Attributi di Validazione
 
